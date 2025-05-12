@@ -5,4 +5,5 @@ main () {
 	factorial();
 	rev();
 	palindrome();
+	date();
 }

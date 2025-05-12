@@ -1,5 +1,5 @@
-ABC.exe:main.o big3.o fact.o rev.o palindrome.o
-	gcc -o ABC.exe main.o big3.o fact.o rev.o palindrome.o
+ABC.exe:main.o big3.o fact.o rev.o palindrome.o date.o
+	gcc -o ABC.exe main.o big3.o fact.o rev.o palindrome.o date.o
 main.o:main.c
 	gcc -c main.c
 big3.o:big3.c
@@ -10,6 +10,8 @@ rev.o:rev.c
 	gcc -c rev.c
 palindrome.o:palindrome.c
 	gcc -c palindrome.c
+date.o:date.c
+	gcc -c date.c
 clean:
 	rm -f *.o main
 
