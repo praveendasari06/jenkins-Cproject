@@ -5,5 +5,6 @@ main () {
 	factorial();
 	rev();
 	palindrome();
-	date();
+	date()
+	version();
 }
