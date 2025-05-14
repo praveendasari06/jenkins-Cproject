@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.huname.h>
 
-void version() {
+int version() {
     struct utsname unameData;
 
     // Get Linux and kernel information
