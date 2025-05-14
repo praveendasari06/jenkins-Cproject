@@ -1,27 +1,26 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.huname.h>
+#include <sys/utsname.h>
 
 int version() {
-    struct utsname unameData;
+    struct utsname sysinfo;
 
-    // Get Linux and kernel information
-    if (uname(&unameData) == 0) {
-        printf("Operating System: %s\n", unameData.sysname);
-        printf("Kernel Version: %s\n", unameData.release);
-    } else {
+    // Get system info
+    if (uname(&sysinfo) == -1) {
         perror("uname");
+        return 1;
     }
 
-    // Get Git version
-    printf("Git Version: ");
-    fflush(stdout); // Ensure the prompt is displayed before the command execution
-    system("git --version");
+    // Print details
+    printf("System Name    : %s\n", sysinfo.sysname);
+    printf("Node Name      : %s\n", sysinfo.nodename);
+    printf("Kernel Release : %s\n", sysinfo.release);
+    printf("Kernel Version : %s\n", sysinfo.version);
+    printf("Machine        : %s\n", sysinfo.machine);
+    printf("Architecture   : %s\n", sysinfo.machine);  // same as machine
+#if defined(_GNU_SOURCE)
+    printf("Domain Name    : %s\n", sysinfo.domainname); // GNU extension
+#endif
 
-    // Get Java version
-    printf("Java Version: ");
-    fflush(stdout); // Ensure the prompt is displayed before the command execution
-    system("java -version 2>&1 | grep \"java version\" ");
-
-    // return 0;
+   // return 0;
 }
+
